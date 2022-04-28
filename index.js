@@ -17,6 +17,19 @@ Practice accessing data by console.log-ing the following pieces of data note.
 
 //(e) Winner of 2014 world cup final */
 
+const filteredByYear = fifaData.filter((year) => {
+    return year.Year == 2014
+});
+
+const filteredByStage = filteredByYear.filter((stage) => {
+    return stage.Stage == 'Final'
+});
+
+console.log(filteredByStage[0]['Home Team Name'])
+console.log(filteredByStage[0]['Away Team Name'])
+console.log(filteredByStage[0]['Home Team Goals'])
+console.log(filteredByStage[0]['Away Team Goals'])
+console.log(filteredByStage[0]['Win conditions'])
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
