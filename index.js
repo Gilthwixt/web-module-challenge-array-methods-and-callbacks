@@ -25,11 +25,13 @@ const filteredByStage = filteredByYear.filter((stage) => {
     return stage.Stage == 'Final'
 });
 
-console.log(filteredByStage[0]['Home Team Name'])
-console.log(filteredByStage[0]['Away Team Name'])
-console.log(filteredByStage[0]['Home Team Goals'])
-console.log(filteredByStage[0]['Away Team Goals'])
-console.log(filteredByStage[0]['Win conditions'])
+console.log(filteredByStage)
+console.log('Answers to questions to follow...')
+console.log('a)', filteredByStage[0]['Home Team Name'])
+console.log('b)', filteredByStage[0]['Away Team Name'])
+console.log('c)', filteredByStage[0]['Home Team Goals'])
+console.log('d)', filteredByStage[0]['Away Team Goals'])
+console.log('e)', filteredByStage[0]['Win conditions'])
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
@@ -72,8 +74,18 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(targetArray, callback) {
+    const filteredByCallback = callback(targetArray);
+    const Winners = [];
+    for (let i = 0; i < filteredByCallback.length; i++) {
+        if (filteredByCallback[i]['Home Team Goals'] > filteredByCallback[i]['Away Team Goals']) {
+            Winners.push(filteredByCallback[i]['Home Team Name'])
+            }
+        else if (filteredByCallback[i]['Away Team Goals'] > filteredByCallback[i]['Home Team Goals']) {
+            Winners.push(filteredByCallback[i]['Away Team Name'])
+            }
+    }
+    return Winners
 }
 
 
@@ -89,8 +101,15 @@ Use the higher-order function getWinnersByYear to do the following:
 💡 HINT: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
+function getWinnersByYear(targetArray, cb0, cb1, cb2) { // cb0 is getFinals, cb1 is getYears, cb2 is getWinners
+    const finalsGames = cb0(targetArray);
+    const winnersByYear = [];
+    for (let i = 0; i < finalsGames.length; i++) {
+        const years = cb1(targetArray, cb0)
+        const winners = cb2(targetArray, cb0)
+        winnersByYear.push(`In ${years[i]}, ${winners[i]} won the world cup!`)
+    }
+    return winnersByYear
 }
 
 
