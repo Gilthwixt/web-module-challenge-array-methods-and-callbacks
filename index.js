@@ -74,6 +74,8 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
+
+
 function getWinners(targetArray, callback) {
     const filteredByCallback = callback(targetArray);
     const Winners = [];
@@ -127,12 +129,24 @@ Use the higher order function getAverageGoals to do the following:
  
 */
 
-function getAverageGoals(/* code here */) {
-    /* code here */
+function getAverageGoals(callback) {
+    const finalsGames = callback
+    const finalScores = [];
+    for (let i = 0; i < finalsGames.length; i++) {
+        finalScores.push(finalsGames[i]['Home Team Goals'])
+        finalScores.push(finalsGames[i]['Away Team Goals'])
+    }
+    console.log(finalScores)
+    const totalGoals = finalScores.reduce((previousValue, currentValue) => {
+       return previousValue + currentValue
+    })
+    console.log(totalGoals)
+    const averageGoals = (totalGoals / finalsGames.length)
+    console.log(averageGoals)
+    return averageGoals.toFixed(2)
  }
 
-
-
+getAverageGoals(getFinals(fifaData))
 
 /// 🥅 STRETCH 🥅 ///
 
